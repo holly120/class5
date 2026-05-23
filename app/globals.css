@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 科幻與賽博朋克 (Cyberpunk) 科技感風格背景 */
+.cyber-bg {
+  background-color: #030712; /* 極暗科技灰黑 */
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 科技感發光網格線 */
+.cyber-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 霓虹發光字體效果 */
+.neon-text-cyan {
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.6), 0 0 12px rgba(6, 182, 212, 0.3);
+}
+
+.neon-text-green {
+  text-shadow: 0 0 5px rgba(52, 211, 153, 0.6), 0 0 12px rgba(52, 211, 153, 0.3);
+}
+
+.neon-text-pink {
+  text-shadow: 0 0 5px rgba(244, 63, 94, 0.6), 0 0 12px rgba(244, 63, 94, 0.3);
+}
+
+/* 3D 科技按鈕陰影與發光 */
+.cyber-btn-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25), inset 0 0 10px rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+}
+
+.cyber-btn-cyan:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.45), inset 0 0 12px rgba(6, 182, 212, 0.2);
+}
+
+.cyber-panel-shadow {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.08), inset 0 0 20px rgba(6, 182, 212, 0.03);
+}
+
+/* 呼吸發光動畫 */
+@keyframes cyber-pulse {
+  0%, 100% {
+    opacity: 0.95;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+  }
+}
+
+.animate-cyber-pulse {
+  animation: cyber-pulse 3s infinite ease-in-out;
+}
+
+/* 雷達掃描動畫線 */
+@keyframes radar-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.radar-line {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.35), transparent);
+  animation: radar-sweep 6s linear infinite;
+  pointer-events: none;
+  z-index: 40;
+}
+
+
